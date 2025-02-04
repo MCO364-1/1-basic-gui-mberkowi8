@@ -11,7 +11,7 @@ public class BasicGui {
 
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
         JFrame window = new JFrame();
         window.setTitle("➕🪟");
         window.setSize(500, 400);
@@ -24,11 +24,14 @@ public class BasicGui {
         JPanel panel = new JPanel(new GridLayout(3,6));
 
         JTextField text1 = new JTextField(5);
+        text1.setBackground(randomColor());
         JTextField text2 = new JTextField(5);
+        text2.setBackground(randomColor());
 
 
-        JButton button = new JButton("Addition Button");
-        JLabel label = new JLabel("      ");
+        JButton additionButton = new JButton("Addition Button");
+
+        JLabel solutionLabel = new JLabel("      ");
 
         window.setBackground(randomColor());
         window.add(panel);
@@ -37,13 +40,10 @@ public class BasicGui {
 
         panel.add(text1);
         panel.add(text2);
-        panel.add(button);
-        panel.add(label);
+        panel.add(additionButton);
+        panel.add(solutionLabel);
 
-
-
-
-        button.addActionListener(new ActionListener() {
+        additionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -55,18 +55,15 @@ public class BasicGui {
 
                     int sum = int1 + int2;
 
-                    label.setText(String.valueOf(sum));
+                    solutionLabel.setText(String.valueOf(sum));
                     System.out.println("It worked!!! ");
 
                 } catch (NumberFormatException ex) {
-                    label.setText("Invalid!!!");
+                    solutionLabel.setText("Invalid!!!");
                 }
             }
         });
 
-
-
         window.setVisible(true);
-
     }
 }
